@@ -23,4 +23,11 @@ body{
   .btn-primary{
     @apply w-full text-sm bg-link text-white p-2 rounded my-1 hover:bg-link;
   }
+  .icon-btn{
+    @apply text-xl text-slate-300 cursor-pointer hover:text-link;
+  }
+  .input-label{
+    @apply text-xs text-slate-300
+  }
 }
+
