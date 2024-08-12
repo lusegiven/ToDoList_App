@@ -10,6 +10,10 @@ const AddEditNotes = ({noteData, type, onClose }) => {
 
     const [error, setError] = useState(null);
 
+    const addNewNote = async() => {};
+
+    const editNote = async() => {};
+
     const handleAddNote = () =>{
         if(!title){
             setError("Please Enter title");
@@ -20,7 +24,13 @@ const AddEditNotes = ({noteData, type, onClose }) => {
             return;
         }
         setError("");
-    }
+
+        if(type==="edit"){
+            editNote();
+        } else {
+            addNewNote();
+        }
+    };
 
     return (
         <div className='relative'>
