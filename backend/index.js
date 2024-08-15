@@ -100,6 +100,20 @@ app.post("/login", async(req,res) =>{
     }
 });
 
+//Getting a user
+app.get("/get-user", authenticateToken, async(req,res) => {
+    const { user } = req.user;
+    const isUser = await User.findOne({_id: user._id});
+
+    if(!user){
+        return res.sendStatus(401);
+    }
+    return res.json({
+        user: {fullName: isUser.fullName, email: isUser.email, _id: isUser._id, createdOn: isUser.createdOn},
+        message:""
+    });
+});
+
 // Adding Notes
 app.post("/add-todo",authenticateToken, async(req,res) => {
   const { title, content, tags } = req.body;
@@ -218,8 +232,37 @@ app.delete("/delete-todo/:noteId", authenticateToken, async(req,res) => {
             message:"Internal server error",
         });
     }
-})
+});
 
+//updating isPinned
+app.put("/update-todo-pinned/:noteId", authenticateToken,async(req,res) => {
+    const noteId = req.params.noteId;
+    const {isPinned} = req.body;
+    const{user} = req.user;
+
+    try{
+        const note = await Note.findOne({_id: noteId, userId:user._id });
+
+        if(!note){
+            return res.status(404).json({error: true, message:"ToDo not found"});
+        }
+
+        note.isPinned = isPinned;
+
+        await note.save();
+
+        return res.json({
+            error: false,
+            note,
+            message:"ToDo pinned successfully",
+        });
+    } catch (error){
+        return res.status(500).json({
+            error: true,
+            message:"Internal server error",
+        });
+    }
+});
 
 app.listen(8000)
 module.exports = app;

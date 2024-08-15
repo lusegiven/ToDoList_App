@@ -29,5 +29,6 @@ body{
   .input-label{
     @apply text-xs text-slate-300
   }
+  
 }
 
