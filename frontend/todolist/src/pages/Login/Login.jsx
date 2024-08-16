@@ -50,7 +50,7 @@ const Login = () => {
   return <>
     <div
       className="flex items-center justify-center bg-cover bg-center min-h-screen animation-zoom-in"
-      style={{ backgroundImage: `url(${backgroundImage})`, overflow: 'hidden' }}
+      style={{ backgroundImage: `url(${backgroundImage})`}}
     >
       <div className='flex items-center justify-center mt-0'>
         <div className='w-80 border rounded bg-white px-7 py-10 ml-10 mr-4'>
