@@ -36,6 +36,10 @@ const home = () => {
     setOpenAddEditModal({ isShown: true, data: todoDetails, type: "edit" });
   }
 
+  const handleClickedTodo = (todoDetails) => {
+    setOpenAddEditModal({isShown:true, data:todoDetails, type:"click"})
+  }
+
   const showToastmessage = (message, type) => {
     setShowToastmsg({
       isShown: true,
@@ -139,7 +143,7 @@ const home = () => {
 
   return (
     <>
-      <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
+      <div style={{background: "linear-gradient(90deg, #E0EAFB 0%, #F5FBFF 100%)", backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
 
         <Navbar userInfo={userInfo} onSearchTodo={onSearchTodo} handleClearSearch={handleClearSearch} />
 
@@ -154,6 +158,7 @@ const home = () => {
                 tags={item.tags}
                 isPinned={item.isPinned}
                 onEdit={() => handleEdit(item)}
+                onView={() => handleClickedTodo(item)}
                 onDelete={() => deleteNote(item)}
                 onPinNote={() => updateIsPinned(item)}
               />

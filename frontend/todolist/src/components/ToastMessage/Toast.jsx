@@ -8,7 +8,7 @@ const Toast = ({ isShown, message, type, onClose }) => {
     if (isShown) {
       const timeoutId = setTimeout(() => {
         onClose();
-      }, 3000);
+      }, 1000);
       return () => {
         clearTimeout(timeoutId);
       };
@@ -24,7 +24,7 @@ const Toast = ({ isShown, message, type, onClose }) => {
         <div className='flex items-center gap-3 py-2 px-4'>
           <div className={`w-10 h-10 flex items-center justify-center rounded-full ${type === "delete" ? "bg-red-50" : "bg-green-50"}`}
           >
-            {type === 'delete' ? (<MdDeleteOutline className='text-xl text-red-500'/>) : (<LuCheck className="text-xl text-green-500" />)}
+            {type === "delete" ? (<MdDeleteOutline className='text-xl text-red-500'/>) : (<LuCheck className="text-xl text-green-500" />)}
           </div>
           <p className='text-sm text-slate-800'>{message}</p>
         </div>

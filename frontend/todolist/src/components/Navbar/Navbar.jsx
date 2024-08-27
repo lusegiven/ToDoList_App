@@ -9,7 +9,7 @@ const Navbar = ({userInfo, onSearchTodo,handleClearSearch}) => {
   
   const onLogOut = () => {
     localStorage.clear();
-    navigate("/login"); 
+    navigate("/"); 
   };
 
   const handleSearch = () => {
@@ -24,8 +24,11 @@ const Navbar = ({userInfo, onSearchTodo,handleClearSearch}) => {
   };
 
   return (
-    <div className=" bg-white flex items-center justify-between px-6 py-2 drop-shadow">
-      <h2 className="text-xl font-medium text-black py-2">Notes</h2>
+    <div className=" bg-white flex items-center justify-between px-6 py-2 drop-shadow" 
+    style={{
+      background: 'linear-gradient(135deg, #FCE3E8 0%, #F8F5F7 100%)',
+    }}>
+      <h2 className="text-xl font-bold py-2" style={{ color: '#3A3A3A' }}>ToDos</h2>
 
       <SearchBar 
         value={searchQuery}

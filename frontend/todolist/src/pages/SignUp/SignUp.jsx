@@ -15,71 +15,72 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if(!name){
+    if (!name) {
       setError("Please enter your name")
       return;
     }
-    if(!validateEmail(email)){
+    if (!validateEmail(email)) {
       setError("Please enter a valid email address")
       return;
     }
-    if(!password){
+    if (!password) {
       setError("Please set a password");
       return;
     }
 
     setError("");
 
-    try{
+    try {
       const response = await axiosInstance.post("/create-account", {
         fullName: name,
         email: email,
         password: password,
       });
 
-      if(response.data && response.data.error){
-       setError(response.data.message)
-       return
+      if (response.data && response.data.error) {
+        setError(response.data.message)
+        return
       }
-      if(response.data && response.data.accesstoken){
+      if (response.data && response.data.accesstoken) {
         localStorage.setItem("token", response.data.accesstoken)
-        navigate("/"); 
+        navigate("/");
       }
-     } catch(error){
-        if(error.response && error.response.data && error.response.data.message){
-          setError(error.response.data.message);
-        } else {
-          setError("An unexpected error occured. please try again!");
-        }
-     }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("An unexpected error occured. please try again!");
+      }
+    }
   };
 
 
   return (
     <>
       <div
-        className="flex items-center justify-center bg-cover bg-center min-h-screen animation-zoom-in"
-        style={{ backgroundImage: `url(${backgroundImage})`, overflow: 'hidden' }}
+        className="flex items-center justify-center bg-center min-h-screen"
+        style={{
+          background: 'linear-gradient(90deg, #D7DDE8 0%, #757F9A 100%)',
+        }}
       >
-        <div className='flex items-center justify-center mt-0'>
-          <div className='w-80 border rounded bg-white px-7 py-10 ml-10 mr-4'>
-            <form onSubmit={handleSignUp}>
-              <h4 className='text-2xl mb-7'>Sign Up</h4>
-
+        <div className='"bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-30 rounded-lg p-20 w-full max-w-lg text-whites "'>
+          <form onSubmit={handleSignUp} className="space-y-8">
+            <h4 className='text-2xl mb-7'>Sign Up</h4>
+            <div className="relative border-b-2 border-gray-300 focus-within:border-white w-full space-y-8">
               <input type='text'
                 placeholder='Name'
-                className='input-box'
+                className="w-full bg-transparent outline-none text-white placeholder-black peer "
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-
+            <div className="relative border-b-2 border-gray-300 focus-within:border-white w-full "></div>
               <input type='text'
                 placeholder='Email'
-                className='input-box'
+                className="w-full bg-transparent outline-none text-white placeholder-black peer "
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-
+            </div>
               <PasswordInput
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -91,14 +92,13 @@ const SignUp = () => {
 
               <p className='text-sm text-center mt-4'>
                 Already have an account?{" "} <br />
-                <Link to="/login" className='font-bold-custom text-link underline'>
+                <Link to="/" className='font-bold-custom text-link underline'>
                   Login
                 </Link>
-                </p>
-            </form>
-          </div>
-        </div>
+              </p>
+          </form>
       </div>
+    </div >
     </>
   )
 }
