@@ -1,9 +1,12 @@
 {
+    "version": 2,
     "builds": [
-      { "src": "frontend/todolist/package.json", "use": "@vercel/static-build" }
+      { "src": "frontend/todolist/package.json", "use": "@vercel/static-build", "config": { "distDir": "todolist/build" } },
+      { "src": "backend/package.json", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "frontend/$1" }
+      { "src": "/api/(.*)", "dest": "backend/$1" },
+      { "src": "/(.*)", "dest": "frontend/todolist/$1" }
     ]
   }
   
