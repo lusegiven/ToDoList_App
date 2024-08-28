@@ -80,7 +80,7 @@ const home = () => {
   //Getting all the todos
   const getAlltodos = async () => {
     try {
-      const response = await axiosInstance.get("/get-todolists");
+      const response = await axiosInstance.get("https://todolist-app-oqhf.onrender.com/get-todolists");
 
       if (response.data && response.data.notes) {
         setAlltodos(response.data.notes);

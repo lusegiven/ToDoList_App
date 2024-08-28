@@ -19,7 +19,7 @@ const AddEditNotes = ({ noteData, type, getAlltodos, onClose, showToastmessage }
 
     const addNewNote = async () => {
         try {
-            const response = await axiosInstance.post("/add-todo", {
+            const response = await axiosInstance.post("https://todolist-app-oqhf.onrender.com/add-todo", {
                 title,
                 content,
                 tags,
@@ -39,7 +39,7 @@ const AddEditNotes = ({ noteData, type, getAlltodos, onClose, showToastmessage }
     const editNote = async () => {
         const noteId = noteData._id;
         try {
-            const response = await axiosInstance.put("/edit-todo/" + noteId, {
+            const response = await axiosInstance.put("https://todolist-app-oqhf.onrender.com/edit-todo/" + noteId, {
                 title,
                 content,
                 tags,
