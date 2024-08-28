@@ -18,9 +18,7 @@ const {authenticateToken} = require("./utilities");
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://to-do-list-app-client.vercel.app', 
-    methods: ["POST", "GET"],
-    credentials: true 
+    origin: 'http://localhost:5173' // Replace with your frontend's URL
   }));
 
 app.get("/", (req,res) => {
