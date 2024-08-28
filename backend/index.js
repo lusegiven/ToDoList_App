@@ -18,7 +18,7 @@ const {authenticateToken} = require("./utilities");
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:5173' // Replace with your frontend's URL
+    origin:"https://todolist-app-1-j64f.onrender.com" // Replace with your frontend's URL
   }));
 
 app.get("/", (req,res) => {
