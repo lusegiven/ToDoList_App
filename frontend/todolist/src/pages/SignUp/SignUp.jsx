@@ -31,7 +31,7 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await axiosInstance.post("/create-account", {
+      const response = await axiosInstance.post("https://todolist-app-oqhf.onrender.com/create-account", {
         fullName: name,
         email: email,
         password: password,
@@ -43,7 +43,7 @@ const SignUp = () => {
       }
       if (response.data && response.data.accesstoken) {
         localStorage.setItem("token", response.data.accesstoken)
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
