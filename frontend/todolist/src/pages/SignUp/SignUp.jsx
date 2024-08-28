@@ -31,7 +31,7 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await axiosInstance.post("/create-account", {
+      const response = await axiosInstance.post("https://to-do-list-app-client.vercel.app/create-account", {
         fullName: name,
         email: email,
         password: password,
