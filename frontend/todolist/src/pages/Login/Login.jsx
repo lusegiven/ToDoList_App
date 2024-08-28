@@ -29,7 +29,7 @@ const Login = () => {
 
      //login api call
      try{
-      const response = await axiosInstance.post("https://to-do-list-app-server-lusegivens-projects.vercel.app/login", {
+      const response = await axiosInstance.post("/login", {
         email: email,
         password: password,
       });
