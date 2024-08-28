@@ -1,12 +1,11 @@
 {
     "version": 2,
     "builds": [
-      { "src": "frontend/todolist/package.json", "use": "@vercel/static-build" },
-      { "src": "backend/package.json", "use": "@vercel/node" }
+      { "src": "*.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "backend/$1" },
-      { "src": "/(.*)", "dest": "frontend/todolist/$1" }
+      { "src": "/(.*)", "dest": "/" }
+      
     ]
   }
   
