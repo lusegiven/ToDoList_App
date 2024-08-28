@@ -59,7 +59,7 @@ const home = () => {
   //getting the info of the user
   const getUserInfo = async () => {
     try {
-      const response = await axiosInstance.get("https://to-do-list-app-client.vercel.app/get-user");
+      const response = await axiosInstance.get("https://to-do-list-app-server-2n6cm8luh-lusegivens-projects.vercel.app/get-user");
       if (response.data && response.data.user) {
         setUserInfo(response.data.user);
       }
@@ -80,7 +80,7 @@ const home = () => {
   //Getting all the todos
   const getAlltodos = async () => {
     try {
-      const response = await axiosInstance.get("https://to-do-list-app-client.vercel.app/get-todolists");
+      const response = await axiosInstance.get("https://to-do-list-app-server-2n6cm8luh-lusegivens-projects.vercel.app/get-todolists");
 
       if (response.data && response.data.notes) {
         setAlltodos(response.data.notes);
@@ -93,7 +93,7 @@ const home = () => {
   const deleteNote = async (data) => {
     const noteId = data._id
     try {
-      const response = await axiosInstance.delete("https://to-do-list-app-client.vercel.app/delete-todo/" + noteId);
+      const response = await axiosInstance.delete("https://to-do-list-app-server-2n6cm8luh-lusegivens-projects.vercel.app/delete-todo/" + noteId);
       if (response.data && !response.data.error) {
         showToastmessage("Todo Deleted successfully", 'delete');
         getAlltodos();
@@ -108,7 +108,7 @@ const home = () => {
   //searching for a todo
   const onSearchTodo = async (query) => {
     try {
-      const response = await axiosInstance.get("https://to-do-list-app-client.vercel.app/search-todos", {
+      const response = await axiosInstance.get("https://to-do-list-app-server-2n6cm8luh-lusegivens-projects.vercel.app/search-todos", {
         params: { query }
       });
       if (response.data && response.data.notes) {
@@ -129,7 +129,7 @@ const home = () => {
   const updateIsPinned = async(noteData) => {
     const noteId = noteData._id
         try {
-            const response = await axiosInstance.put("https://to-do-list-app-client.vercel.app/update-todo-pinned/" + noteId, {
+            const response = await axiosInstance.put("https://to-do-list-app-server-2n6cm8luh-lusegivens-projects.vercel.app/update-todo-pinned/" + noteId, {
               "isPinned" : !noteData.isPinned,
             });
             if (response.data && response.data.note) {
