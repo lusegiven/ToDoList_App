@@ -17,9 +17,21 @@ const {authenticateToken} = require("./utilities");
 
 app.use(express.json());
 
+const allowedOrigins = [
+  'https://todolist-app-1-j64f.onrender.com',
+  'http://localhost:5173'
+];
+
 app.use(cors({
-    origin:"https://todolist-app-1-j64f.onrender.com" // Replace with your frontend's URL
-  }));
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+}));
+
 
 app.get("/", (req,res) => {
     res.json({data:"hello"});
