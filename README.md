@@ -9,6 +9,7 @@ The application includes features like adding, editing, and deleting tasks, as w
 
 You can explore the live version of the application here:
 (https://todolist-app-1-j64f.onrender.com/)
+After creating an account, you can go back to Login page and login as a user.
 
 Feel free to test the app and experience its features firsthand.
 
